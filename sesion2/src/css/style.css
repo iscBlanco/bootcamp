@@ -1,0 +1,58 @@
+h1{
+
+}
+
+section#Sesion2{
+    width: 33%;
+    display: inline-block;
+    background: cadetblue;
+    margin: auto;
+    border-radius: 15px;
+    border:solid;
+    padding:10px;
+
+}
+
+section#parrafos{
+    width: 50%;
+    display: inline-block;
+    background: cadetblue;
+    margin: auto;
+    border-radius: 15px;
+    border:solid;
+    padding:30px;
+}
+
+section#parrafos>div>p::selection{
+    background: chocolate;
+    color:darkkhaki;
+}
+
+section#ejercicio03{
+    background: chocolate;
+    color:darkkhaki;
+}
+
+.sectionAnimated{
+    text-transform: capitalize;
+}
+section#parrafos{
+    animation: fadeElement 3s forwards;
+    
+}
+
+@keyframes fadeElement{
+    from{
+        opacity: 1;
+        pointer-events: all;
+    }
+    to{
+        opacity: 0;
+        pointer-events: none;
+        
+    }
+}
+
+.ocultarElemento{
+    display:none;
+}
