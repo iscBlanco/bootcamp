@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+</html>
+<script>
+  let usuario=[
+  {
+    id:1,
+    tipo:'aumento',
+    fechaCorte:true,
+    fecha:'2019-11-14',
+    monto: 10000
+  },
+  {
+    id:2,
+    tipo:'disposicion',
+    fechaCorte:true,
+    fecha:'2019-11-15',
+    monto: 10000
+  },
+  {
+    id:3,
+    tipo:'aumento',
+    fechaCorte:true,
+    fecha:'2019-11-16',
+    monto: 10000
+  },
+  {
+    id:4,
+    tipo:'disposicion',
+    fechaCorte:true,
+    fecha:'2019-11-17',
+    monto: 10000
+  },
+  {
+    id:5,
+    tipo:'aumento',
+    fechaCorte:true,
+    fecha:'2019-11-19',
+    monto: 10000
+  },
+  ]
+
+let fechaCorte = usuario.filter(movimiento =>{
+  if(movimiento.fechaCorte == true){
+    return movimiento
+  }
+})
+
+
+let aumentoLinea = usuario.filter(movimiento =>{
+  if(movimiento.tipo == 'aumento'){
+    return movimiento
+  }
+})
+
+
+let disposicion = usuario.filter(movimiento =>{
+  if(movimiento.tipo == 'disposicion'){
+    return movimiento
+  }
+})
+
+/*console.log(fechaCorte)
+console.log(aumentoLinea)
+console.log(disposicion)*/
+
+let conjuntoDatos = usuario.reduce((accum,elemento) =>{
+  if(elemento.fechaCorte == true){
+    accum.fechaCorte.push(elemento)
+  }
+  if(elemento.tipo == 'aumento'){
+    accum.aumentoLinea.push(elemento)
+  }
+  if(elemento.tipo == 'disposicion'){
+    accum.totalDisposiciones += elemento.monto
+    accum.disposicion.push(elemento)
+  }
+  return accum
+
+},{fechaCorte:[], aumentoLinea:[],disposicion:[], totalDisposiciones:0})
+console.log(conjuntoDatos)
+</script>

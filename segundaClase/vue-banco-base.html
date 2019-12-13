@@ -1,0 +1,261 @@
+<html>
+	<head>
+		<!--link para el archivo de los estilos-->
+		<link rel="stylesheet" type="text/css" href="css/estilos.css" />
+		<!--cdn o link para uso del framework Vue-->
+		<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+		<!--cdn o link para el uso del framework bulma-->
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
+		<!--link para el uso de la libreria moment-->
+		<script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+		<style>
+			#hola:before{
+				background: green;
+				content:'hola 1';
+				height: 200px;
+				width: 400px;
+			}
+			#hola{
+				content:'hola3';
+				background: yellow;
+				height: 200px;
+				width: 800px;
+			}
+			#hola:after{
+				background: red;
+				content:'hola';
+				height: 200px;
+				width: 400px;
+			}
+			#button{
+				background:#ddff33;
+				border:none;
+				color:	#000;
+			}
+			#button:hover{
+				background: #00ff33;
+				border:1px solid #ff22ab;
+			}
+			#input:focus{
+				color:#ddff33;
+				font-size: 50px;
+			}
+			h1{
+				text-align: center;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div id="app" class="">
+			<p>{{message}}</p>
+			{{montoADisponer}}
+			<input v-model="montoADisponer"type="text">
+			<button @click="agregarMovimientos" class="button">Agregar disposicion</button>
+			<br>
+			<br>
+			<br>
+			<h1 class="title">Movimientos</h1>
+			<table class="table is-fullwidth">
+				<thead>
+					<tr>
+						<th>Fecha</th>
+						<th>Tipo de movimiento</th>
+						<th>Monto</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="movimiento in movimientos">
+						<td>{{movimiento.fecha}}</td>
+						<td>{{movimiento.tipo}}</td>
+						<td>{{movimiento.monto}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<h1 class="title">Mis Fechas de Corte</h1>
+			<table class="table is-fullwidth">
+		<thead>
+			<tr>
+				<th>Fecha</th>
+				<th>Tipo de movimiento</th>
+				<th>Monto</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr v-for="movimiento in movimientosFiltrados.fechaCorte">
+				<td>{{movimiento.fecha}}</td>
+				<td>{{movimiento.tipo}}</td>
+				<td>{{movimiento.monto}}</td>
+			</tr>
+		</tbody>
+	</table>
+			<h1 class="title">Mis disposiciones</h1>
+			<table class="table is-fullwidth">
+		<thead>
+			<tr>
+				<th>Fecha</th>
+				<th>Tipo de movimiento</th>
+				<th>Monto</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr v-for="movimiento in movimientosFiltrados.disposicion">
+				<td>{{movimiento.fecha}}</td>
+				<td>{{movimiento.tipo}}</td>
+				<td>{{movimiento.monto}}</td>
+			</tr>
+		</tbody>
+	</table>
+			<h1 class="title">Aumento de linea de crédito</h1>
+			<table class="table is-fullwidth">
+				<thead>
+					<tr>
+						<th>Fecha</th>
+						<th>Tipo de movimiento</th>
+						<th>Monto</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="movimiento in movimientosFiltrados.aumentolinea">
+						<td>{{movimiento.fecha}}</td>
+						<td>{{movimiento.tipo}}</td>
+						<td>{{movimiento.monto}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
+<!--<script src="js/js.js"></script>-->
+<script>
+	let app = new Vue({
+		el: '#app',
+		data() {
+			return {
+				message: 'Grupo Vue',
+				movimientos:[
+					{
+						id: 1,
+						tipo: 'disposicion',
+						fechaCorte: false,
+						fecha: '2019-11-16',
+						monto: 200
+					},
+					{
+						id: 2,
+						tipo: 'aumentolinea',
+						fechaCorte: false,
+						fecha: '2019-11-17',
+						monto: 1000
+					},
+					{
+						id: 3,
+						tipo: null,
+						fechaCorte: false,
+						fecha: '2019-11-18',
+						monto: null
+					},
+					{
+						id: 4,
+						tipo: null,
+						fechaCorte: false,
+						fecha: '2019-11-19',
+						monto: null
+					},
+					{
+						id: 5,
+						tipo: null,
+						fechaCorte: false,
+						fecha: '2019-11-20',
+						monto: null
+					},
+					{
+						id: 6,
+						tipo: null,
+						fechaCorte: true,
+						fecha: '2019-11-21',
+						monto: null
+					},
+					{
+						id: 7,
+						tipo: 'disposicion',
+						fechaCorte: false,
+						fecha: '2019-11-22',
+						monto: 200
+					},
+					{
+						id: 8,
+						tipo: 'disposicion',
+						fechaCorte: false,
+						fecha: '2019-11-23',
+						monto: 200
+					},
+					{
+						id: 9,
+						tipo: null,
+						fechaCorte: false,
+						fecha: '2019-11-24',
+						monto: 200
+					},
+					{
+						id: 10,
+						tipo: null,
+						fechaCorte: false,
+						fecha: '2019-11-25',
+						monto: null
+					}
+				],
+				movimientosFiltrados:{
+				},
+				montoADisponer:null
+			}//return
+		},//data
+		methods:{
+			agregarMovimientos(){
+				let nuevoMovimiento ={
+					id:this.movimientos.length+1,
+					tipo:'disposicion',
+					fechaCorte: false,
+					//fecha:'2019-11-17',
+					fecha: moment().format('YYYY-MM-DD'),
+					monto: this.montoADisponer
+				}//
+				this.movimientos.push(nuevoMovimiento)
+				this.filtradoDeDatos()
+				//console.log(this.montoADisponer)
+			},
+			filtradoDeDatos(){
+				this.movimientosFiltrados = this.movimientos.reduce((accum ,movimiento) => {
+					if (movimiento.fechaCorte == true) {
+						accum.fechaCorte.push(movimiento)
+					}
+					if (movimiento.tipo == 'aumentolinea') {
+						accum.aumentolinea.push(movimiento)
+					}
+					if (movimiento.tipo == 'disposicion') {
+						accum.totalDisposiciones += movimiento.monto
+						accum.disposicion.push(movimiento)
+					}
+					return accum
+				}, { fechaCorte: [], aumentolinea: [], disposicion: [], totalDisposiciones: 0 })
+
+			}//filtradoDeDatos
+
+		},//methods
+
+		beforeMount () {
+			console.log('antes de crearse')
+		},
+		mounted() {
+			this.filtradoDeDatos()
+
+		},
+		beforeDestroy () {
+
+		},
+		destroyed(){
+
+		}
+	})
+</script>

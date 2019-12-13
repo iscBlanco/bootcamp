@@ -1,0 +1,20 @@
+html{
+  background: #333;
+  }
+p{}
+h1{
+  background-color:red;
+}
+img{
+  width: 50%;
+}
+.half{
+  width: 50%;
+  display: block;
+  float: left;
+}
+.primerParrafo{
+  text-align: center;
+  font-size: 20px;
+  color: #ffdd;
+}

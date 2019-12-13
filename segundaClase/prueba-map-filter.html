@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+</html>
+<script >
+    let arregloObjeto = [
+      {
+        id:1,
+        nombre:'jose',
+        carrera:'ingenieria en sistemas',
+        semestre:'2do'
+      },
+      {
+        id:2,
+        nombre:'jose',
+        carrera:'ingenieria civil',
+        semestre:'1er'
+      },
+      {
+        id:3,
+        nombre:'jose',
+        carrera:'ingenieria en sistemas',
+        semestre:'1er'
+      },
+      {
+        id:4,
+        nombre:'jose',
+        carrera:'ingenieria civil',
+        semestre:'2do'
+      },
+      {
+        id:5,
+        nombre:'jose',
+        carrera:'ingenieria en sistemas',
+        semestre:'1er'
+      },
+      {
+        id:6,
+        nombre:'jose',
+        carrera:'ingenieria civil',
+        semestre:'1er'
+      },
+      {
+        id:7,
+        nombre:'jose',
+        carrera:'ingenieria en sistemas',
+        semestre:'1er'
+      },
+      {
+        id:8,
+        nombre:'jose',
+        carrera:'ingenieria en sistemas',
+        semestre:'1er'
+      },
+      {
+        id:9,
+        nombre:'jose',
+        carrera:'ingenieria en sistemas',
+        semestre:'1er'
+      },
+      {
+        id:10,
+        nombre:'jose',
+        carrera:'ingenieria civil',
+        semestre:'2do'
+      },
+    ]
+    //console.log(arregloObjeto)
+    /*let filtradoConFilter = arregloObjeto.filter((datos,i)=>{
+      if(datos.id>5){
+        return datos
+      }
+    })
+    let filtradoConMap = arregloObjeto.map((dato,i)=>{
+      if(dato.id>4){
+        return dato
+      }
+    })*/
+    let filtradoConReduce= arregloObjeto.reduce((accum,objeto)=>{
+      if(objeto.semestre== '2do'){
+        accum.segundoSemestre.push(objeto)
+      }
+      if(objeto.carrera == 'ingenieria civil'){
+        accum.carreras.push(objeto)
+      }
+      return accum
+    },{segundoSemestre:[],carreras:[]})
+    console.log(filtradoConReduce.segundoSemestre)
+    console.log(filtradoConReduce.carreras)
+    //console.log(filtradoConFilter)
+    //console.log(filtradoConMap)
+
+</script>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<script>
+
+</script>
+  </body>
+</html>
+<script>
+  let variable1 = 'hola'
+  var variable2
+  console.log(variable1)
+
+  let datoArray =[]
+  array =['auto','moto','bici','avion']
+  array[4]='patineta'
+  console.log(array, typeof array)
+  console.log(array.toString(), typeof array.toString())
+  console.log(array.join('--'))
+
+//objetos
+
+let silla ={
+  patas: 4,
+  color: 'azul',
+  estado: "Buen estado"
+}
+  console.log(silla)
+  console.log(silla.color)
+
+//Jason JSON
+
+let sillaJSON ={
+  "patas": 4,
+  "color": 'azul',
+  "estado": "Buen estado"
+}
+console.log( sillaJSON)
+
+let objetoString = '{"valor":1,"dato":2, "algo":3}'
+//Texto a JSON
+objetoString = JSON.parse(objetoString)
+//JSON a Texto
+objetoString = JSON.stringify(objetoString)
+console.log(objetoString)
+console.log(typeof objetoString)
+
+
+//PROGRAMACION IMPERATIVA
+
+
+</script>
+<!-- tipos de datos
+let
+var
+const
+
+ejemplos de tipos de variables
+datos primitivos
+
+boolean true/false
+numerico=1;
+datoTexto ='hola';
+datoNull = null;
+
+datos estructurados
+
+-arreglos
+  let datoArray =['auto','avion','bici','moto']
+  posicion o indice de los datos es de izquierda a derecha
+  para acceder
+    datoArray[0]
+
+    datoArray = ['auto','avion','bici','moto']
+    datoArray.toString()
+    datoArray.join(', ')
+
+-objetos
+
+
+comparacion con dos iguales
+'1'==1  (lo toma como valor igual javascript)
+'1'===1 (aqui se comparan los tipos y lo toma como diferente)
+
+-->

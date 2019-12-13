@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="Css/estilos.css">
+	<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	con esta linea se importa View -->
+<style media="screen">
+	#app{
+		font-size: 20px;
+		width:200px;
+		height: 200px;
+	}
+	#button{
+	background:#ddff33;
+	border:none;
+	color:	#000;
+	}
+	#button:hover{
+		background: #00ff33;
+		border:1px solid #ff22ab;
+
+	}
+	#input:focus{
+		color:#ddff33;
+		font-size: 50px;
+
+	}
+</style>
+</head>
+<body>
+	<div class="half">
+		<img src="Imagenes/auto.png">
+	</div>
+	<div id="app" class="half">
+		<p class="primerParrafo">Hola{{message}}</p>
+
+		<p class="primerParrafo" v-if="valido===true">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+		<!--<p v-else>hola fhjklasjfk jlakjlksdaj ksdjklds </p>
+		<p class="primerParrafo" v-html="codigo">algo</p>-->
+		<p v-for="elemento in animal1">
+			<b>{{elemento.animal}}</b>: {{elemento.nombre}}
+			<todo-item elemento="elemento" :animal="elemento.animal" :nombre="elemento.nombre">
+		</p>
+		<!--<p style="margin-left:20px; color: white;">	{{contador}}</p>-->
+		<button id="button" @click="contadorFunction"> alaaaerta</button>
+	</div>
+
+</body>
+
+
+</html>
+<script>
+	Vue.component('todo-item',{
+		props: ['animal','nombre'],
+		template:'<li>Animal => {{animal}} - nombre: {{nombre}} </li>'
+	})
+	let app = new Vue({
+		el: '#app',
+		data (){
+			return{
+				message: 'Instancia1',
+				valido:true,
+				codigo:'<p>hola4</p>',
+				lista:[{animal:'gato', nombre: 'mascota1'}, {animal:'perro', nombre:'mascota2'}],
+        animal1:[],
+				contador:1
+			}
+		},
+		methods: {
+			contadorFunction (){
+
+          let nuevoAnimal = {
+              id:this.contador,
+              animal:'perro',
+              nombre:'terry'
+          }
+            this.animal1.push(nuevoAnimal)
+
+            this.contador +=1
+				//<!--return  animal1-->
+			}
+		}
+
+	})
+</script>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+  </head>
+  <body>
+
+  </body>
+</html>
+<script scr="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+
+<<script>
+
+    let libros=[
+      {
+        id:1,
+        nombre:'el poder del ahora',
+        movimiento:'prestado',
+        fechaMovimiento:'2019-11-11',
+        estadoInicial:'bien',
+        estadoEntrega:'medio'
+      },
+      {
+        id:2,
+        nombre:'el poder del subconciente',
+        movimiento:'entregado',
+        fechaMovimiento:'2019-11-13',
+        estadoInicial:'medio',
+        estadoEntrega:'medio'
+      },
+      {
+        id:3,
+        nombre:'me vale madre',
+        movimiento:'prestado',
+        fechaMovimiento:'2019-11-14',
+        estadoInicial:'medio',
+        estadoEntrega:'malo'
+      },
+      {
+        id:4,
+        nombre:'dont hurt me',
+        movimiento:'prestado',
+        fechaMovimiento:'2019-11-17',
+        estadoInicial:'bien',
+        estadoEntrega:'bien'
+      },
+      {
+        id:5,
+        nombre:'corriendo hacia dios',
+        movimiento:'entregado',
+        fechaMovimiento:'2019-11-13',
+        estadoInicial:'bien',
+        estadoEntrega:'malo'
+      },
+      {
+        id:6,
+        nombre:'higiene mental',
+        movimiento:'entregado',
+        fechaMovimiento:'2019-11-19',
+        estadoInicial:'bien',
+        estadoEntrega:'bien'
+      },
+      {
+        id:7,
+        nombre:'el poder interior',
+        movimiento:'prestado',
+        fechaMovimiento:'2019-11-10',
+        estadoInicial:'bien',
+        estadoEntrega:'medio'
+      },
+      {
+        id:8,
+        nombre:'limpieza mental',
+        movimiento:'entregado',
+        fechaMovimiento:'2019-11-11',
+        estadoInicial:'bien',
+        estadoEntrega:'medio'
+      },
+      {
+        id:9,
+        nombre:'cesar lozano',
+        movimiento:'prestado',
+        fechaMovimiento:'2019-11-16',
+        estadoInicial:'medio',
+        estadoEntrega:'medio'
+      },
+      {
+        id:10,
+        nombre:'el poder ',
+        movimiento:'prestado',
+        fechaMovimiento:'2019-11-09',
+        estadoInicial:'bien',
+        estadoEntrega:'malo'
+      },
+    ]
+
+    let libreria = libros.reduce((accum,elemento)=>{
+      if(elemento.movimiento == 'prestado'){
+        accum.numPrestados +=1
+      }
+      if(elemento.movimiento =='prestado'){
+        accum.prestados.push(elemento)
+      }
+      if(elemento.movimiento =='entregado'){
+        accum.entregados.push(elemento)
+      }
+      if(elemento.movimiento == 'entregado'){
+        accum.numEntregados +=1
+      }
+      if(elemento.estadoInicial != elemento.estadoEntrega){
+        accum.cambioEstado.push(elemento)
+      }
+      //console.log(convertToDateTime(elemento.fechaMovimiento, "yyyy-MM-dd"))
+      //if(){
+
+      //}
+      if(moment().diff(elemento.fechaMovimiento, 'days')<0){
+        accum.entregadosDespues.push(elemento)
+      }
+
+      return accum
+    },{numPrestados:0,prestados:[],entregados:[],numEntregados:0,cambioEstado:[],entregadosDespues:[]})
+    console.log(libreria)
+</script>

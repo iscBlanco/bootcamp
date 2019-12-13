@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+</html>
+<script>
+  //PROGRAMACION IMPERATIVA
+  let DatoArray = ['auto','moto','bici','avion']
+  for(data of DatoArray){
+    console.log(data)
+  }
+
+  let array2=[
+  {id:1,
+    nombre:'jose',
+  },
+  {id:2,
+    nombre:'juan'
+  },
+  {id:3,
+    nombre:'pedro'
+  },
+  {id:4,
+    nombre:'pablo'
+  },
+  {id:5,
+    nombre:'armando'
+  },
+  {id:6,
+    nombre:'lucas'
+  },
+  {id:7,
+    nombre:'leon'
+  },
+  {id:8,
+    nombre:'axel'
+  },
+  {id:8,
+    nombre:'pepe'
+  },
+  {id:9,
+    nombre:'arnulfo'
+  },
+  {id:10,
+    nombre:'beto'
+  },
+  ]
+/*for (data of array2){
+  console.log()
+}*/
+
+//PROGRAMACION FUNCIONAL O DECLARATIVA
+let array3 = array2.map((data2,i)=>{
+  if (data2.id>7){
+    //console.log()
+    return data2.nombre
+  }
+  else{
+    return data2.id
+  }
+})
+console.log('arrayCopia',array3)
+//console.log(array2)
+</script>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!--cdn Vue-->
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <!--cdn bulma-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
+    <title>Ejercicio de Libreria</title>
+    <style media="screen">
+
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{mensaje}}</h1>
+      <input v-model="agregarLibro"type="text">
+      <button v-on:click="agregarMovimiento" class="button">Agregar nuevo libro</button>
+
+      <table class="table is-fullwidth">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Movimiento</th>
+            <th>Fecha</th>
+            <th>Edo.Inicial</th>
+            <th>Edo.Entrega</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="libro in libros">
+            <td>{{libro.id}}</td>
+            <td>{{libro.nombre}}</td>
+            <td>{{libro.movimiento}}</td>
+            <td>{{libro.fechaMovimiento}}</td>
+            <td>{{libro.estadoInicial}}</td>
+            <td>{{libro.estadoEntrega}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br>
+      <h1>Libros Prestados</h1>
+      <table class="table is-fullwidth">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Movimiento</th>
+            <th>Fecha</th>
+            <th>Edo.Inicial</th>
+            <th>Edo.Entrega</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="elemento in librosFiltrados.prestados">
+            <td>{{elemento.id}}</td>
+            <td>{{elemento.nombre}}</td>
+            <td>{{elemento.movimiento}}</td>
+            <td>{{elemento.fechaMovimiento}}</td>
+            <td>{{elemento.estadoInicial}}</td>
+            <td>{{elemento.estadoEntrega}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <h1>Libros Entregados</h1>
+      <table class="table is-fullwidth">
+        <thead>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Movimiento</th>
+          <th>Fecha</th>
+          <th>Edo.Inicial</th>
+          <th>Edo.Entrega</th>
+        </thead>
+        <tbody>
+          <tr v-for="libro in librosFiltrados.entregados">
+            <td>{{libro.id}}</td>
+            <td>{{libro.nombre}}</td>
+            <td>{{libro.movimiento}}</td>
+            <td>{{libro.fechaMovimiento}}</td>
+            <td>{{libro.estadoInicial}}</td>
+            <td>{{libro.estadoEntrega}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
+<script>
+  let app = new Vue({
+    el: '#app',
+    data(){
+      return{
+        //aqui van todas las variables necesarias en el estado
+        mensaje:'hola',
+        libros:[
+          {
+            id:1,
+            nombre:'el poder del ahora',
+            movimiento:'prestado',
+            fechaMovimiento:'2019-11-11',
+            estadoInicial:'bien',
+            estadoEntrega:'medio'
+          },
+          {
+            id:2,
+            nombre:'el poder del subconciente',
+            movimiento:'entregado',
+            fechaMovimiento:'2019-11-13',
+            estadoInicial:'medio',
+            estadoEntrega:'medio'
+          },
+          {
+            id:3,
+            nombre:'me vale madre',
+            movimiento:'prestado',
+            fechaMovimiento:'2019-11-14',
+            estadoInicial:'medio',
+            estadoEntrega:'malo'
+          },
+          {
+            id:4,
+            nombre:'dont hurt me',
+            movimiento:'prestado',
+            fechaMovimiento:'2019-11-17',
+            estadoInicial:'bien',
+            estadoEntrega:'bien'
+          },
+          {
+            id:5,
+            nombre:'corriendo hacia dios',
+            movimiento:'entregado',
+            fechaMovimiento:'2019-11-13',
+            estadoInicial:'bien',
+            estadoEntrega:'malo'
+          },
+          {
+            id:6,
+            nombre:'higiene mental',
+            movimiento:'entregado',
+            fechaMovimiento:'2019-11-19',
+            estadoInicial:'bien',
+            estadoEntrega:'bien'
+          },
+          {
+            id:7,
+            nombre:'el poder interior',
+            movimiento:'prestado',
+            fechaMovimiento:'2019-11-10',
+            estadoInicial:'bien',
+            estadoEntrega:'medio'
+          },
+          {
+            id:8,
+            nombre:'limpieza mental',
+            movimiento:'entregado',
+            fechaMovimiento:'2019-11-11',
+            estadoInicial:'bien',
+            estadoEntrega:'medio'
+          },
+          {
+            id:9,
+            nombre:'cesar lozano',
+            movimiento:'prestado',
+            fechaMovimiento:'2019-11-16',
+            estadoInicial:'medio',
+            estadoEntrega:'medio'
+          },
+          {
+            id:10,
+            nombre:'el poder ',
+            movimiento:'prestado',
+            fechaMovimiento:'2019-11-09',
+            estadoInicial:'bien',
+            estadoEntrega:'malo'
+          },
+        ],
+        librosFiltrados:{},
+        agregarLibro:null
+      }//return
+    },//data
+    methods:{
+      //aqui van las funciones
+      filtradoDeDatos(){
+        this.librosFiltrados = this.libros.reduce((accum, elementoLibro)=>{
+          if(elementoLibro.movimiento == 'prestado'){
+            accum.prestados.push(elementoLibro)
+            //console.log(elementoLibro)
+          }
+          if(elementoLibro.movimiento == 'entregado'){
+            accum.entregados.push(elementoLibro)
+          }
+          return accum
+        },{prestados:[],entregados:[]})
+
+      },
+      agregarMovimiento(){
+        let nuevoLibro ={
+          id:this.libros.length+1,
+          nombre:this.agregarLibro,
+          movimiento:'entregado',
+          fechaMovimiento:'2019-11-29',
+          estadoInicial:'bien',
+          estadoEntrega:'malo'
+        }
+        this.libros.push(nuevoLibro)
+        this.filtradoDeDatos()
+
+      }
+    },
+    beforeMount(){
+
+    },
+    mounted(){
+      this.filtradoDeDatos()
+    },
+    beforeDestroy(){
+
+    },
+    destroyed(){
+
+    }
+
+  })//Vue
+</script>
