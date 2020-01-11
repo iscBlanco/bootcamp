@@ -1,23 +1,32 @@
-.container-1>*{
+/* Color Theme Swatches in Hex */
+* {
+    --color-1-hex : #f20732;
+    --color-2-hex : #07038c;
+    --color-3-hex : #0439d9;
+    --color-4-hex : #056cf2;
+    --color-5-hex : #f20505;
+}
+
+.container-1 > * {
     font-size: xx-large;
 }
 
-.container-1{
+.container-1 {
     display: grid;
     height: 100vh;
     grid-template-areas: 
-    "header " "aside-1"
+    "header" 
+    "aside-1"
     "header "
     "section-2"
     "aside-2"
     "section-1"
     "footer"
-    
-    ;
+    ; 
 }
 
 
-@media(min-width: 769px){
+@media (min-width: 769px){
     .container-1{
         grid-template-areas: 
         "header header header header"
@@ -33,6 +42,29 @@
 
 .container-1>aside:nth-of-type(1){
     grid-area: aside-1;
-    background-color: var;
-    (--color-1-hex);
+    background-color: var(--color-1-hex);
+}
+.container-1 > aside:nth-of-type(2){
+    grid-area: aside-2;
+    background-color: var(--color-2-hex);
+}
+
+.container-1>section:nth-of-type(1){
+    grid-area: section-1;
+    background-color: var(--color-1-hex);
+}
+.container-1 >section:nth-of-type(2){
+    grid-area: section-2;
+    background-color: var(--color-2-hex);
+}
+.container-2{
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 9fr;
+    grid-template-rows: 1fr 9fr 2fr;
+    grid-template-areas: 
+    "header header"
+    "aside main"
+    "aside footer"
+    ;
 }
