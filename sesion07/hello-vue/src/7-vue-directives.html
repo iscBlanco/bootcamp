@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Hola</h1>
+        <input type="text" v-model='nombre'>
+        <h1 v-text='nombre'></h1>
+        <p>{{nombre}}</p>
+    </div>
+    <a href="index.html">HOME</a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script>
+        let app = new Vue({
+            el:"#app",
+            data:{
+                nombre:'',
+                vueEcosystem:[
+                    {id:1, technology: 'vue CLI'},
+                    {id:2, technology: 'vue devtools'},
+                    {id:3, technology: 'vue router'},
+                    {id:4, technology: 'vuex (state manager)'},
+                    {id:5, technology: 'nuxt (server side render)'},
+                ] ,
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Vue Ecosystem</h1>
+    <section id="app">
+        <un-componente
+            v-for='vuetech in vueEcosystem'
+            :variable="vuetech.technology">
+        </un-componente>
+        <button v-on:click='agregarElemento'>Agregar</button>
+    </section>
+    <a href="./index.html">HOME</a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script>
+        Vue.component('un-componente',{
+            props:['variable'],
+            template: '<p>{{variable}}</p>'
+        })
+        let app = new Vue({
+            el:'#app',
+            data:{
+                hola:'prueba',
+                vueEcosystem:[
+                    {id:1, technology:"vue cli"},
+                    {id:2, technology:"vue devtools"},
+                    {id:3, technology:"vue router"},
+                    {id:4, technology:"vue (state manager)"},
+                    {id:5, technology:"nuxt (server side render)"},
+                ]
+            },
+            methods:{
+                agregarElemento(){
+                    console.log('button has been clicked!')
+                    this.vueEcosystem.push({id:6,technology:"vue loader"})
+                }
+            },
+        })
+    </script>
+</body>
+</html>

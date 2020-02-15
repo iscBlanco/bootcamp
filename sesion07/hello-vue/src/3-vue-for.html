@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Vue Ecosystem</h1>
+    <section id="root">
+       <!-- 
+           este codigo es igual al for de abajo
+        <ul>
+            <li v-for='(tech, idx) in vueEcosystem'>{{idx}} - {{tech.technology}}</li>
+        </ul>
+        -->
+        <ul>
+            <li v-for='elementos in vueEcosystem'>
+                {{elementos.id}} - {{elementos.technology}}
+            </li>
+        </ul>
+    </section>
+    <a href="./index.html">HOME</a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script>
+        let app = new Vue({
+            el:"#root",
+            data: {
+                vueEcosystem:[
+                    {id:1, technology:'Vue CLI'},
+                    {id:2, technology:'Vue devtools'},
+                    {id:3, technology:'Vue router'},
+                    {id:4, technology:'Vue (state manager)'},
+                    {id:5, technology:'nuxt (server side render)'},
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

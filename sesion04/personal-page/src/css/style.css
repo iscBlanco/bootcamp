@@ -1,0 +1,75 @@
+*{
+    --padding: 15px;
+}
+
+body{
+    background-color: blue;
+    height: 100vh;
+    margin: 0;
+}
+
+div#bg{
+   /* clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);*/
+    clip-path: polygon(0% 0%, 100% 0, 36% 70%, 75% 100%, 0% 100%);
+
+    background-color: aqua;
+    /*background-image: url("../assets/dragonFondo.jpg");
+    background-image: url("https://cdn.hipwallpaper.com/i/19/52/sfabou.jpg");*/
+    width: 80vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+}
+
+header a{
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: var(--padding);
+}
+
+section#card{
+    background: #fff;
+    padding: 20px;
+    margin: 1em auto;
+    border-radius: 15px;
+    box-shadow: 15px;
+    width: 40%;
+}
+
+section#card > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+section#card > ul >li{
+    margin-bottom: 10px;
+}
+
+section#card>ul>li>span{
+    position: absolute;
+    width:30px ;
+    height: 30px;
+    background-color: salmon;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+section#card>ul>li>strong{
+    display: inline-block;
+    margin-left: 40px;
+    margin-right: 10px;
+}
+
+section#primary{
+    color: #fff;
+    padding: var(--padding);
+    text-align: center;
+}
+
+section#primary>h1{
+    font-size: 3em;
+    margin-top: 10px;
+    text-transform: uppercase;
+
+}

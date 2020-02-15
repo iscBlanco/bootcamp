@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <section id="root">
+        <h1>Hello World {{holaMundo}}</h1>
+    </section>    
+    <section id="aplicate">
+        <h1>prueba con {{vue}}</h1>
+
+    </section>
+    <a href="./index.html">HOME</a>
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#root',
+            data: {
+                holaMundo:"Vue"
+            }
+        })
+        let app2 = new Vue({
+            el: '#aplicate',
+            data:{
+                vue:'Vue CLI'
+            }
+        })
+    </script>
+</body>
+</html>
