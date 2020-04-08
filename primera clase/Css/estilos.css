@@ -10,8 +10,9 @@ img{
 }
 .half{
   width: 50%;
-  display: block;
+  display:flex;
   float: left;
+  justify-content: center;
 }
 .primerParrafo{
   text-align: center;
