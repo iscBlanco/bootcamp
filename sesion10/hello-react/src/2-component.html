@@ -24,12 +24,18 @@
                     </div>
                     
                 )
+            }
         }
         class InnerComponent extends React.Component {
             render(){
-                return (<h2>Inner Component</h2>)
+                return <h2>Inner Component</h2>
             }
         }
+
+        ReactDOM.render(
+            <WelcomeComponent/>,
+            document.querySelector('#root')
+        )
     
     </script>
     
